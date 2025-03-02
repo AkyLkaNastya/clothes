@@ -4,6 +4,8 @@ from torchvision import transforms
 from PIL import Image
 import torchvision.models as models
 
+model_path = 'final_model_finetuned.pth'
+
 # Загрузка модели
 def load_model(model_path, num_classes=15):
     model = models.efficientnet_b0(pretrained=False)
@@ -63,7 +65,7 @@ if uploaded_file is not None:
 
     image_tensor = preprocess_image(image)
 
-    model = load_model("best_model_finetuned.pth")
+    model = load_model(model_path)
 
     # Классификация
     predicted_class_idx = classify_image(model, image_tensor)
